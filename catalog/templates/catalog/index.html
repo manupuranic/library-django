@@ -1,0 +1,31 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalog</title>
+  </head>
+  <body>
+    <h1>Welcome to Library</h1>
+    <p>Total Books: {{ num_books }}</p>
+    <p>Number of Books Available: {{num_instance_avail}}</p>
+    {% if user.is_authenticated %}
+    <p>{{user.username}} is logged in</p>
+    <button><a href="{% url 'profile' %}">Profile</a></button>
+    <form method="POST" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <input type="submit" value="Logout" />
+    </form>
+    {% else %}
+    <p>You are not logged in</p>
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <input type="submit" value="Login" />
+    </form>
+    <form method="POST" action="{% url 'signup' %}">
+      {% csrf_token %}
+      <input type="submit" value="Sign Up" />
+    </form>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,7 @@
+<h1>Welcome to Book List</h1>
+<h1>Here are your books:</h1>
+<ol>
+  {% for book in bookinstance_list %}
+  <li>{{ book.book.title }}</li>
+  {% endfor %}
+</ol>
